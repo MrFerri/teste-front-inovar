@@ -9,7 +9,7 @@ Este projeto foi desenvolvido utilizando o framework [NextJs](https://nextjs.org
 ### Instalação
 Para repoduzir em sua máquina é necessário ter instalado o [Node.js](https://nodejs.org/en/download).
 
-Após a instalação faça o download desse projeto pelo git através do comando:
+Após a instalação faça o download deste projeto pelo git através do comando:
 ```bash
 git clone https://github.com/MrFerri/teste-front-inovar.git
 ```
@@ -26,7 +26,7 @@ Para rodar o projeto localmente como desenvolvimento rode o seguinte comando no 
 ```bash
 npm run dev
 ```
-Caso queira gerar a versão de produção rode os comando abaixo
+Caso queira gerar a versão de produção rode os comandos abaixo
 ```bash
 npm run build
 npm run start
