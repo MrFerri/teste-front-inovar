@@ -3,12 +3,12 @@
  */
 import "@testing-library/jest-dom";
 import { act, render, screen } from "@testing-library/react";
-
 import Home from "../app/page";
 import { PriorityTypes } from "../types/priority.interface";
 import { filterByText, orderBy } from "@/utils/utils";
 import { Post } from "@/types/post.interface";
 import React from "react";
+import PostCard from "@/components/PostCard";
 
 describe("Home", () => {
   it("should render a main element with the correct class name", async () => {
@@ -26,7 +26,7 @@ const list = [
     author: "a",
     comments: "4",
     likes: "3",
-    created_at: "",
+    created_at: "1712529923000",
     url_photo: "",
     title: "",
   },
@@ -36,7 +36,7 @@ const list = [
     author: "b",
     comments: "5",
     likes: "2",
-    created_at: "",
+    created_at: "1712529913000",
     url_photo: "",
     title: "",
   },
@@ -46,7 +46,7 @@ const list = [
     author: "c",
     comments: "6",
     likes: "1",
-    created_at: "",
+    created_at: "1712529723000",
     url_photo: "",
     title: "",
   },
@@ -82,12 +82,55 @@ describe("orderBy function", () => {
     const orderedList = orderBy(list, priority);
     expect(orderedList).toEqual(list.reverse());
   });
+  it("should return an array sorted by likes in descending order given a list of items", () => {
+    const priority = PriorityTypes.LIKES_DESC;
+    const orderedList = orderBy(list, priority);
+    expect(orderedList).toEqual(list);
+  });
+
+  it("should return an array sorted by comments in ascending order given a list of items", () => {
+    const priority = PriorityTypes.COMMENT_ASC;
+    const orderedList = orderBy(list, priority);
+    expect(orderedList).toEqual(list);
+  });
+
   it("should return an array sorted by comments in descending order given a list of items", () => {
     const priority = PriorityTypes.COMMENT_DESC;
     const orderedList = orderBy(list, priority);
     expect(orderedList).toEqual(list.reverse());
   });
-  
 
-  
+  it("should return an array sorted by comments in ascending order given a list of items", () => {
+    const priority = PriorityTypes.DATE_ASC;
+    const orderedList = orderBy(list, priority);
+    expect(orderedList).toEqual(list.reverse());
+  });
+  it("should return an array sorted by comments in descending order given a list of items", () => {
+    const priority = PriorityTypes.DATE_DESC;
+    const orderedList = orderBy(list, priority);
+    expect(orderedList).toEqual(list);
+  });
+});
+
+describe("PageCard", () => {
+  it("should render the post card with correct information when all data is provided", () => {
+    const post = {
+      url: "insideintercom.io",
+      category: "Opinion",
+      author: "Sacha Greif",
+      comments: "1611529923001",
+      likes: "4",
+      created_at: "1611529923000",
+      url_photo:
+        "https://img.freepik.com/fotos-gratis/retrato-de-homem-feliz-e-sorridente_23-2149022620.jpg?w=1480&t=st=1713829202~exp=1713829802~hmac=223edd1cd18dda2ad692f415daf03a5ffa5afa18b46ccf446772392e6fb09893",
+      title: "Some things can't be wireframed",
+    };
+
+    render(<PostCard post={post} />);
+
+    expect(screen.getByText(post.title)).toBeInTheDocument();
+    expect(screen.getByText(post.author)).toBeInTheDocument();
+    expect(screen.getByText(post.category)).toBeInTheDocument();
+    expect(screen.getByText(post.likes)).toBeInTheDocument();
+  });
 });
