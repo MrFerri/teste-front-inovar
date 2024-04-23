@@ -8,6 +8,5 @@ export async function GET(req: NextRequest) {
   const order = searchParams.get("order") || "";
   const page = searchParams.get("page") || "1";
   const posts = mountPosts(data?.posts, search, order, parseInt(page));
-  console.log(posts);
   return NextResponse.json(posts, { status: 200 });
 }
