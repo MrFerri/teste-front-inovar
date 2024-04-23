@@ -16,7 +16,7 @@ export default function Category({ value }: CategoryProps) {
 
   return (
     <div
-      className={`bg-${bgColor} rounded-full  py-0.5 px-2 text-white text-xs `}
+      className={`bg-${bgColor} rounded-full  py-0.5 px-2 text-white text-2xs `}
     >
       {value}
     </div>

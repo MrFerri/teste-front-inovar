@@ -59,11 +59,12 @@ export default function PostCard({ post }: PostProps) {
           </a>
         </div>
         <div className="flex">
-          <div className="flex h-full flex-wrap items-center gap-2">
+          <div className="flex h-full flex-wrap items-center gap-3">
             <Category value={post.category} />
-            <Separator />
-
-            <div className="relative w-5 h-5 rounded ">
+            <div className=" h-5">
+              <Separator />
+            </div>
+            <div className="relative w-4 h-4 rounded ">
               <Image
                 className="rounded-sm"
                 src={post.url_photo}
@@ -72,11 +73,11 @@ export default function PostCard({ post }: PostProps) {
                 sizes="2vw"
               />
             </div>
-            <p className="text-link-400 underline text-xs underline-offset-2 font-semibold">
+            <p className="text-link-400 underline text-2xs underline-offset-2 font-semibold">
               {post.author}
             </p>
 
-            <div className="h-full text-grays-600 text-2xs underline-offset-2 content-center ">
+            <div className="h-full text-grays-600 text-[9px] underline-offset-2 content-center ">
               {timeAgo(post.created_at)}
             </div>
             <Circle />
